@@ -531,7 +531,7 @@ object Core {
         changed()
     }
 
-    fun setBatch(n: Int) {
+    fun changeBatch(n: Int) {
         batch = maxOf(1, n)
         sub = 0
         lastMsg = "Batch size set to " + batch + "."
@@ -857,7 +857,7 @@ class MainActivity : Activity() {
         hideKeyboard()
         batchEdit.clearFocus()
         rootView.requestFocus()
-        Core.setBatch(n)
+        Core.changeBatch(n)
     }
 
     private fun shareBatch() {
@@ -1194,8 +1194,8 @@ class FloatService : Service() {
         )
         body.addView(
             row(
-                chip("Batch -", "#37474F") { Core.setBatch(Core.batch - 1) },
-                chip("Batch +", "#37474F") { Core.setBatch(Core.batch + 1) }
+                chip("Batch -", "#37474F") { Core.changeBatch(Core.batch - 1) },
+                chip("Batch +", "#37474F") { Core.changeBatch(Core.batch + 1) }
             )
         )
         scroll.addView(body)
